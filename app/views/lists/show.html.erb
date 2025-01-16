@@ -1,13 +1,20 @@
-<div class="row">
-  <h1><%= @list.name %></h1>
-  <%= link_to "Add a movie", new_list_bookmark_path(@list) %>
-  <div class="col">
-    <div class="cards">
-      <% @list.movies.each do |movie| %>
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= movie.poster_url %>)">
-          <%= movie.title %>
+<h1><%= @list.name %></h1>
+<%= link_to "Add a movie", new_list_bookmark_path(@list) %>
+<div class="row row-cols-2 row-cols-md-3 g-4">
+  <% @list.movies.each do |movie| %>
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= movie.poster_url %>">
+            <h2><%= movie.title %></h2>
         </div>
-      <% end %>
+        <div class="card-body">
+          <p class="card-text"><%= movie.overview %></p>
+        </div>
+        <div class="card-footer">
+          <%= movie.rating %>⭐️
+          <%= movie.bookmarks.find_by(list_id: @list.id).comment %>
+        </div>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>
