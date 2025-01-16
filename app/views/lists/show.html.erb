@@ -1,0 +1,13 @@
+<div class="row">
+  <h1><%= @list.name %></h1>
+  <%= link_to "Add a movie", new_list_bookmark_path(@list) %>
+  <div class="col">
+    <div class="cards">
+      <% @list.movies.each do |movie| %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= movie.poster_url %>)">
+          <%= movie.title %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
