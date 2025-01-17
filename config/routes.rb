@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  get 'bookmarks/new'
-  get 'bookmarks/create'
-  get 'bookmarks/delete'
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -15,7 +13,5 @@ Rails.application.routes.draw do
     resources :bookmarks, only: %i[new create]
   end
 
-  resources :bookmarks, only: :delete
-
-  resources :movies, only: :index
+  resources :bookmarks, only: :destroy
 end
